@@ -63,4 +63,6 @@ venv/
 db.sqlite3
 
 # Uploaded files
- uploads/
+uploads/
+
+node_modules
