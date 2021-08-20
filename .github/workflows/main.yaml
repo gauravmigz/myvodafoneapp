@@ -108,7 +108,7 @@ jobs:
 
   deployment:
     runs-on: ubuntu-latest
-    needs: trufflehog_check
+    needs: trufflehog3_check
     steps:
       - run: |
           echo "deployment Job is going on"
