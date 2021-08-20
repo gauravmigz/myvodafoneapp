@@ -84,9 +84,31 @@ jobs:
           path: npm_audit_output.json
         if: always()
 
-  deployment:
+  trufflehog_check:
     runs-on: ubuntu-latest
     needs: [ oast-retire, safety-check, npmaudit-check]
+    steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v2
+
+      - name: Install trufflehog
+        run: pip install trufflehog
+
+      - name: run trufflehog
+        run: | 
+          trufflehog --json . > trufflehog_output.json
+        continue-on-error: true
+      
+      - name: Upload the Retire.JS Output file
+        uses: actions/upload-artifact@v2
+        with:
+          name: RetireJS-Output-File
+          path: retire_output.json
+        if: always()
+
+  deployment:
+    runs-on: ubuntu-latest
+    needs: trufflehog_check
     steps:
       - run: |
           echo "deployment Job is going on"
