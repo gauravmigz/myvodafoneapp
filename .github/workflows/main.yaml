@@ -30,6 +30,7 @@ jobs:
       - name: run Retire.JS Scan
         run: | 
           retire --outputformat json --outputpath retire_output.json
+          cat > 1.txt
         continue-on-error: true
 
   deployment:
