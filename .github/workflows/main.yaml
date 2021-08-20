@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Build Job is going on"
+          echo "Build Job is going on "
           sleep 20
   test:
     runs-on: ubuntu-latest
